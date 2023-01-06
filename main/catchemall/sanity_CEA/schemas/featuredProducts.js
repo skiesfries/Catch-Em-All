@@ -1,7 +1,7 @@
 export default 
 {
-    name: 'sealedProducts',
-    title: 'Sealed Products',
+    name: 'featuredProducts',
+    title: 'Featured Products',
     type: 'document',
     fields: 
     [
@@ -41,7 +41,5 @@ export default
             title:'Description',
             type: 'string',
         }
-        
-
     ]
 }

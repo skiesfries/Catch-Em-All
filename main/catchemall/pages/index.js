@@ -3,7 +3,7 @@ import React from 'react';
 import {client} from '../lib/client';
 import {Product, FooterBanner, HeroBanner} from '../components';
 
-const Home = ({sealedProductsData, cardSinglesData, bannerData}) => (
+const Home = ({featuredProductsData, bannerData}) => (
     <div>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
       <div className='products-heading'>
@@ -12,7 +12,7 @@ const Home = ({sealedProductsData, cardSinglesData, bannerData}) => (
       </div>
 
       <div className='products-container'>
-        {sealedProductsData?.map((sealedProducts) => <Product key={sealedProducts.id} sealedProducts={sealedProducts}/>)}
+        {featuredProductsData?.map((featuredProducts) => <Product key={featuredProducts.id} featuredProducts={featuredProducts}/>)}
       </div>
 
       <FooterBanner/>
@@ -21,17 +21,14 @@ const Home = ({sealedProductsData, cardSinglesData, bannerData}) => (
 
   export const getServerSideProps = async () =>{
 
-    const sealedProductQuery = '*[_type == "sealedProducts"]';
-    const sealedProductsData = await client.fetch(sealedProductQuery);
-    
-    const cardSinglesQuery = '*[_type == "cardSingles"]';
-    const cardSinglesData = await client.fetch(cardSinglesQuery);
+    const featuredProductsQuery = '*[_type == "featuredProducts"]';
+    const featuredProductsData = await client.fetch(featuredProductsQuery);
 
     const bannerQuery = '*[_type == "banner"]';
     const bannerData = await client.fetch(bannerQuery);
 
     return {
-      props: {sealedProductsData, cardSinglesData, bannerData}
+      props: {featuredProductsData, bannerData}
     };
   }
 

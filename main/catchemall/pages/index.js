@@ -5,7 +5,7 @@ import {Product, FooterBanner, HeroBanner} from '../components';
 
 const Home = ({featuredProductsData, bannerData}) => (
     <div>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
+      <HeroBanner heroBanner={bannerData.length && bannerData[1]}/>
       <div className='products-heading'>
         <h2>Featured Products</h2>
         <p>The ultimate sealed products for your collection</p>
@@ -15,7 +15,7 @@ const Home = ({featuredProductsData, bannerData}) => (
         {featuredProductsData?.map((featuredProducts) => <Product key={featuredProducts.id} featuredProducts={featuredProducts}/>)}
       </div>
 
-      <FooterBanner/>
+      <FooterBanner footerBanner={bannerData && bannerData[0]}/>
     </div>
   );
 
@@ -26,7 +26,7 @@ const Home = ({featuredProductsData, bannerData}) => (
 
     const bannerQuery = '*[_type == "banner"]';
     const bannerData = await client.fetch(bannerQuery);
-
+    
     return {
       props: {featuredProductsData, bannerData}
     };

@@ -1,3 +1,4 @@
+
 html,
 body, * {
   padding: 0;
@@ -5,7 +6,6 @@ body, * {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
-
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -26,12 +26,51 @@ width: 100%;
   padding: 10px;
 }
 
-.navbar-container{
+.navbar-container {
   display: flex;
   justify-content: space-between;
-  margin: 6px 18px;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px 18px;
+  height: 80px;
+  width: 95%;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  width: 75%;
+  height: 100%;
+}
+  
+.navbar-link {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2em;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease; 
+}
+  
+.navbar-link:hover {
+  color: #fff;
+  background-color: #dd464b;
+}
+
 .marquee-text{
   font-size: 29px;
   font-weight: 600;
@@ -65,10 +104,27 @@ width: 100%;
     margin-left: 6px;
 }
 .logo{
-  color: gray;
+  color: black;
+  margin-left: 5px;
+  font-weight: bold;
   font-size: 18px;
 
 }
+
+/*TESTING LOGO */
+.poke{
+  object-fit: contain;
+  cursor: pointer;
+  margin-left: 40px;
+  width: 50px;  /* adjust the width to your desired size */
+  height: auto; 
+}
+
+.poke:hover {
+  transform: rotate(360deg);
+  transition: transform 0.5s;
+}
+
 .cart-icon{
   font-size: 25px;
   color: gray;
@@ -98,11 +154,12 @@ width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
   margin-top: 20px;
   width: 100%;
 }
 .product-card{
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +202,7 @@ width: 100%;
 }
 
 .hero-banner-container{
-  padding: 100px 40px;
+  padding: 50px 40px;
   background: linear-gradient(to right, #dcdcdc 60%, #ffffff 40%);
   border: 2px solid #f02d34;
   border-radius: 15px;
@@ -236,9 +293,10 @@ text-align: center;
   font-size: 16px;
   font-weight: 200;
 }
+
 .footer-banner-container{
   padding: 100px 40px;
-  background-color: #f02d34;
+  background: #f02d34;
   border-radius: 15px;
   position: relative;
   height: 400px;
@@ -250,6 +308,7 @@ text-align: center;
 .banner-desc{
   display: flex ;
   justify-content: space-between;
+  color: #324d67;
 }
 .banner-desc button{
   border-radius: 15px;
@@ -270,19 +329,40 @@ text-align: center;
 .banner-desc .left p{
   margin:18px;
 }
+
+.footer-banner-image-container{
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .footer-banner-image{
+  object-fit: contain;
   position: absolute;
   /* top: -35%;
   left: 8%; */
-  top: -25%;
+  top: 25%;
   left: 25%;
+  height: 50%;
+  width: 50%;
 }
+
+@media (max-width: 600px) {
+  .footer-banner-image {
+    width: 300px;  /* reduce the width */
+    height: 300px;  /* reduce the height */
+  }
+}
+
 .banner-desc .right{
   line-height: 1.4;
+  color: #324d67;
 }
 .banner-desc .right h3{
   font-weight: 800;
-  font-size: 60px;
+  font-size: 40px;
 }
 .banner-desc .right p{
   font-size: 18px;
@@ -659,8 +739,8 @@ margin-top: 160px;
     margin-top: 80px;
   }
   .footer-banner-image{
-    width: 77%;
-    left: 30%;
+    width: 50%;
+    left: 20%;
     top: 6%;
     height: 56%
   }
@@ -673,9 +753,11 @@ margin-top: 160px;
     margin:18px;
   }
   .banner-desc .right h3{
+    z-index: 2;
     font-size: 45px;
   }
   .banner-desc .right p{
+    z-index: 2;
     font-size: 18px;
   }
   .banner-desc .right .company-desc{

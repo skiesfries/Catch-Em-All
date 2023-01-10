@@ -1,9 +1,10 @@
 import React from 'react'
+import {AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar} from 'react-icons/ai';
 
 import {client, urlFor} from '../../lib/client';
 
 const ProductDetails = ({products, clickedProduct}) => {
-  const { image, name, details, price }  = clickedProduct;
+  const { image, name, description, price }  = clickedProduct;
     
   return (
     <div>
@@ -12,6 +13,26 @@ const ProductDetails = ({products, clickedProduct}) => {
                 <div className='image-container'>
                     <img src={image && image[0]}/>
                 </div>
+                {/*<div className='small-images-container'>
+                    {image?.map((item, image) => 
+                    (<img src={item} className="" onMouseEnter=""/>)
+                    )}
+                </div> */}
+            </div>
+            <div className='product-detail-desc'>
+                <h1>{name}</h1>
+                <div className='reviews'>
+                    <div>
+                        <AiFillStar/>
+                        <AiFillStar/>
+                        <AiFillStar/>
+                        <AiFillStar/>
+                        <AiOutlineStar/>
+                    </div>
+                    <p>(210)</p>
+                </div>
+                <h4>Product Details: </h4>
+                <p>{description}</p>
             </div>
         </div>
     </div>

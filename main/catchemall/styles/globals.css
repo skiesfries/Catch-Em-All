@@ -523,7 +523,7 @@ padding: 30px 65px;
   transform: scale(1.1,1.1);
 }
 .product-detail-container{
-  display: flex;
+ display: flex;
  gap: 40px;
  margin: 40px;
  margin-top: 60px;

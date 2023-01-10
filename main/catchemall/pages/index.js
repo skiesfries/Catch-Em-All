@@ -19,9 +19,16 @@ const Home = ({featuredProductsData, bannerData}) => (
     </div>
   );
 
+  function randomInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  
+
   export const getServerSideProps = async () =>{
 
-    const featuredProductsQuery = '*[_type == "featuredProducts"]';
+    const randomProduct = randomInRange(1,700);
+    const randomProductEnd = randomProduct + 7;
+    const featuredProductsQuery = `*[_type == "sealedProducts"][${randomProduct}...${randomProductEnd}]`;
     const featuredProductsData = await client.fetch(featuredProductsQuery);
 
     const bannerQuery = '*[_type == "banner"]';

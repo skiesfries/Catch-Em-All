@@ -12,7 +12,7 @@ const Home = ({featuredProductsData, bannerData}) => (
       </div>
 
       <div className='products-container'>
-        {featuredProductsData?.map((featuredProducts) => <Product key={featuredProducts.id} featuredProducts={featuredProducts}/>)}
+        {featuredProductsData?.map((featuredProducts) => <Product key={featuredProducts._id} products={featuredProducts}/>)}
       </div>
 
       <FooterBanner footerBanner={bannerData && bannerData[0]}/>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { urlFor } from '../lib/client';
 
-const Product = ({featuredProducts: {image, name, setName, price, slug, description } }) => {
+const Product = ({products: {image, name, setName, price, slug, description } }) => {
   return (
     <div>
       <Link href={`/product/${slug.current}`}>

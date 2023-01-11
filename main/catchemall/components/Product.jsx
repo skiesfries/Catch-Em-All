@@ -9,9 +9,9 @@ const Product = ({products: {image, name, setName, price, slug, description } })
       <Link href={`/product/${slug.current}`}>
         <div className='product-card'>
           <img src={image && image[0]} className='product-image'/>
-          <div className='product-name-price'>
+          <div>
           <p className='product-name'>{name}</p>
-          <p className='product-price'>{price}</p>
+          <p className='product-price'>${price}</p>
           </div>
         </div>
       </Link>

@@ -35,7 +35,7 @@ const ProductDetails = ({products, clickedProduct}) => {
                 </div>
                 <h4>Product Details: </h4>
                 <p>{description}</p>
-                <p className='price'>{price}</p>
+                <p className='price'>${price}</p>
                 <div className='quantity'>
                     <h3>Quantity: </h3>
                     <p className='quantity-desc'>
@@ -85,9 +85,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: { slug }}) => {
     const query = `*[_type == "sealedProducts" && slug.current == '${slug}'][0]`;
-    const similiarProductsQuery = '*[_type == "sealedProducts"][1...9]';
-
     const clickedProduct = await client.fetch(query);
+
+    const similiarProductsQuery = `*[_type == "sealedProducts" && setName == '${clickedProduct.setName}'][1...9]`;
     const products = await client.fetch(similiarProductsQuery);
 
     return {

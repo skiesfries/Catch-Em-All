@@ -25,7 +25,15 @@ export default
         {
             name:'price',
             title:'Price',
-            type: 'string',
+            type: 'number',
+            validation: (Rule) => Rule.positive(),
+            options: {
+                decimalScale: 2,
+                fixedDecimalScale: true,
+                allowNegative: false,
+                decimalSeparator: '.',
+                thousandSeparator: ',',
+            }
         },
         {
             name:'slug',

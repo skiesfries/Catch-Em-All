@@ -1,11 +1,14 @@
 import React from 'react'
 import {AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar} from 'react-icons/ai';
 import { Product } from '../../components';
+import {useStateContext} from '../../context/StateContext';
 
 import {client, urlFor} from '../../lib/client';
 
 const ProductDetails = ({products, clickedProduct}) => {
   const { image, name, description, price }  = clickedProduct; 
+  const {decreaseQty, increaseQty, qty, addToCart} = useStateContext();
+
   return (
     <div>
         <div className='product-detail-container'>
@@ -39,17 +42,17 @@ const ProductDetails = ({products, clickedProduct}) => {
                 <div className='quantity'>
                     <h3>Quantity: </h3>
                     <p className='quantity-desc'>
-                        <span className='minus' onClick="">
+                        <span className='minus' onClick={decreaseQty}>
                             <AiOutlineMinus/>
                         </span>
-                        <span className='num' onClick="">0</span>
-                        <span className='plus' onClick="">
+                        <span className='num' onClick="">{qty}</span>
+                        <span className='plus' onClick={increaseQty}>
                             <AiOutlinePlus/>
                         </span>
                     </p>
                 </div>
                 <div className='buttons'>
-                    <button type='button' className='add-to-cart' onClick="">
+                    <button type='button' className='add-to-cart' onClick={()=> addToCart(clickedProduct,qty)}>
                         Add To Cart
                     </button>
                 </div>

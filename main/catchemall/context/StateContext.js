@@ -27,7 +27,7 @@ export const StateContext = ({ children }) => {
     const addToCart = (product, quantity) => {
         const itemExistsInCart = cartItems.find((item) => item._id === product._id);
         if (itemExistsInCart) {
-            setCartTotal((prevCartTotal) => prevCartTotal + product.price * quantity);
+            
             setCartItems(
                 cartItems.map((item) =>
                     item._id === product._id
@@ -38,6 +38,7 @@ export const StateContext = ({ children }) => {
         } else {
             setCartItems([...cartItems, { ...product, quantity }]);
         }
+        setCartTotal((prevCartTotal) => prevCartTotal + product.price * quantity);
         setCartQuantity(cartQuantity + quantity);
         toast.success(`${qty} ${product.name} added to cart`);
     };

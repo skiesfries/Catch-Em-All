@@ -4,7 +4,9 @@ import {AiOutlineMinus, AiOutlinePlus, AiOutlineClose, AiOutlineShopping} from '
 import {TiDeleteOutline} from 'react-icons/ti';
 import toast from 'react-hot-toast';
 
+
 import { useStateContext } from '../context/StateContext';
+import { Tooltip } from 'react-tooltip';
 
 const Cart = () => {
   const cartRef = useRef();
@@ -27,12 +29,43 @@ const Cart = () => {
           </div>
           )}
           <div className='product-container'>
-            {cartItems.length >= 1 && cartItems.map((item, index) => (
+            {cartItems.length >= 1 && cartItems.map((item) => (
               <div className='product' key={item._id}>
                 <img src={item?.image[0]} alt="product-image" className='cart-product-image' />
+                <div className='item-desc'>
+                  <div className='flex top'>
+                      <h4 className='cart-item-name'>{item.name}</h4>
+                      <h4>${item.price}</h4>
+                  </div>
+                  <div className='flex bottom'>
+                      <div>
+                        <p className='quantity-desc'>
+                        <span className='minus' onClick="">
+                            <AiOutlineMinus/>
+                        </span>
+                        <span className='num' onClick="">0</span>
+                        <span className='plus' onClick="">
+                            <AiOutlinePlus/>
+                        </span>
+                        </p>
+                      </div>
+                      <button type='button' id="delete-btn" data-tooltip-content="Remove Item" className='remove-item' onClick="">
+                      <Tooltip anchorId="delete-btn" />
+                        <TiDeleteOutline/>
+                      </button>
+                  </div>
+                </div>
               </div>
             ))}         
           </div>
+          {cartItems.length >= 1 && (
+            <div className='cart-bottom'>
+              <div className='total'>
+                <h3>Subtotal: </h3>
+                <h3>${cartTotal}</h3>
+              </div>
+            </div>
+          )}
       </div>
     </div>
   )

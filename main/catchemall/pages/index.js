@@ -27,7 +27,7 @@ const Home = ({featuredProductsData, bannerData}) => (
   export const getServerSideProps = async () =>{
 
     const randomProduct = randomInRange(1,700);
-    const randomProductEnd = randomProduct + 7;
+    const randomProductEnd = randomProduct + 8;
     const featuredProductsQuery = `*[_type == "sealedProducts"][${randomProduct}...${randomProductEnd}]`;
     const featuredProductsData = await client.fetch(featuredProductsQuery);
 

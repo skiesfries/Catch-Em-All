@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { urlFor } from '../lib/client';
 
-const HeroBanner = ({heroBanner}) => {
+const HeroBanner = ({heroBanner, product}) => {
   return (
     <div className='hero-banner-container'>
         <div>
@@ -13,7 +13,7 @@ const HeroBanner = ({heroBanner}) => {
             <h1>{heroBanner.largeText2}</h1>
             <img src={urlFor(heroBanner.image)} alt='featured' className='hero-banner-image' style={{height: 300, width: 300}}></img>
             <div>
-                <Link href={`/product/${heroBanner.product}`}>
+                <Link href={`/product/${product.slug.current}`}>
                     <button type='button'>{heroBanner.buttonText}</button>
                 </Link>
                 <div className='desc'>

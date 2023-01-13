@@ -11,6 +11,9 @@ export const StateContext = ({ children }) => {
     const [cartQuantity, setCartQuantity] = useState(0);
     const [qty, setQty] = useState(1);
 
+    let foundItem;
+    let index;
+
     const increaseQty = () => {
     setQty((previousQty) => previousQty + 1);
     }
@@ -43,6 +46,45 @@ export const StateContext = ({ children }) => {
         toast.success(`${qty} ${product.name} added to cart`);
     };
 
+    const toggleCartItemQuantity = (id, value) => {
+        foundItem = cartItems.find((item) => item._id === id);
+        index = cartItems.indexOf(foundItem);
+
+        if (value === 'increase') {
+            setCartItems([
+                ...cartItems.slice(0, index),
+                { ...foundItem, quantity: foundItem.quantity + 1 },
+                ...cartItems.slice(index + 1),
+            ]);
+            setCartTotal((prevCartTotal) => prevCartTotal + foundItem.price);
+            setCartQuantity(prevCartQuantity => prevCartQuantity + 1);
+        } else if (value === 'decrease') {
+            if (foundItem.quantity > 1) {
+                setCartItems([
+                    ...cartItems.slice(0, index),
+                    { ...foundItem, quantity: foundItem.quantity - 1 },
+                    ...cartItems.slice(index + 1),
+                ]);
+                setCartTotal((prevCartTotal) => prevCartTotal - foundItem.price);
+                setCartQuantity(prevCartQuantity => prevCartQuantity - 1);
+            }
+           
+        }
+    };
+
+    const removeItemFromCart = (id) => {
+        foundItem = cartItems.find((item) => item._id === id);
+        index = cartItems.indexOf(foundItem);
+
+        setCartItems([
+        ...cartItems.slice(0, index),
+        ...cartItems.slice(index + 1)
+        ]);
+        
+        setCartTotal((prevCartTotal) => prevCartTotal - (foundItem.price * foundItem.quantity));
+        setCartQuantity(prevCartQuantity => prevCartQuantity - foundItem.quantity);
+    };
+
     return (
         <Context.Provider 
             value={{
@@ -54,6 +96,8 @@ export const StateContext = ({ children }) => {
                 increaseQty,
                 decreaseQty,
                 addToCart,
+                toggleCartItemQuantity,
+                removeItemFromCart
             }}>
         {children}
         </Context.Provider>

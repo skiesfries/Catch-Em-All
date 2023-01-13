@@ -10,7 +10,7 @@ import { Tooltip } from 'react-tooltip';
 
 const Cart = () => {
   const cartRef = useRef();
-  const {cartTotal, cartQuantity, cartItems, setShowCart} = useStateContext();
+  const {cartTotal, cartQuantity, cartItems, setShowCart, toggleCartItemQuantity, removeItemFromCart} = useStateContext();
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>
@@ -35,21 +35,21 @@ const Cart = () => {
                 <div className='item-desc'>
                   <div className='flex top'>
                       <h4 className='cart-item-name'>{item.name}</h4>
-                      <h4>${item.price}</h4>
+                      <h4>${item.price} x{item.quantity}</h4>
                   </div>
                   <div className='flex bottom'>
                       <div>
                         <p className='quantity-desc'>
-                        <span className='minus' onClick="">
+                        <span className='minus' onClick={() => toggleCartItemQuantity(item._id, 'decrease')}>
                             <AiOutlineMinus/>
                         </span>
-                        <span className='num' onClick="">0</span>
-                        <span className='plus' onClick="">
+                        <span className='num' onClick="">{item.quantity}</span>
+                        <span className='plus' onClick={() => toggleCartItemQuantity(item._id, 'increase')}>
                             <AiOutlinePlus/>
                         </span>
                         </p>
                       </div>
-                      <button type='button' id="delete-btn" data-tooltip-content="Remove Item" className='remove-item' onClick="">
+                      <button type='button' id="delete-btn" data-tooltip-content="Remove Item" className='remove-item' onClick={() => removeItemFromCart(item._id)}>
                       <Tooltip anchorId="delete-btn" />
                         <TiDeleteOutline/>
                       </button>
@@ -62,7 +62,12 @@ const Cart = () => {
             <div className='cart-bottom'>
               <div className='total'>
                 <h3>Subtotal: </h3>
-                <h3>${cartTotal}</h3>
+                <h3>${cartTotal.toFixed(2)}</h3>
+              </div>
+              <div className='btn-container'>
+                <button type='button' className='btn' onClick="">
+                  Checkout
+                </button>
               </div>
             </div>
           )}

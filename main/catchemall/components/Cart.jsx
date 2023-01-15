@@ -24,6 +24,8 @@ const Cart = () => {
       body: JSON.stringify(cartItems),
     });
 
+    console.log(response.body);
+
     if(response.statusCode === 500) return;
     
     const data = await response.json();

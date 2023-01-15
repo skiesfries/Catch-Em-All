@@ -1,10 +1,10 @@
 import Stripe from "stripe";    
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
-        console.log(req.body.cartItems);
+       console.log(req.body);
       try {
         const params = {
             submit_type: 'pay',
@@ -14,19 +14,30 @@ export default async function handler(req, res) {
             {shipping_rate: 'shr_1MPyAgDusieQBY9zYXrDX7VG'},
             {shipping_rate: 'shr_1MPyDvDusieQBY9z6Jq7tWyD'},],
             billing_address_collection: 'auto',
-            line_items: [
-              {
-                price: '{{PRICE_ID}}',
-                quantity: 1,
-              },
-            ],
+            line_items: req.body.map((item) => {
+              return {
+                price_data: { 
+                  currency: 'usd',
+                  product_data: { 
+                    name: item.name,
+                    images: [item.image[0]],
+                  },
+                  unit_amount: Math.round(item.price * 100),
+                },
+                adjustable_quantity: {
+                  enabled:true,
+                  minimum: 1,
+                },
+                quantity: item.quantity
+              }
+            }),
             mode: 'payment',
             success_url: `${req.headers.origin}/?success=true`,
             cancel_url: `${req.headers.origin}/?canceled=true`,
           }
         // Create Checkout Sessions from body params.
         const session = await stripe.checkout.sessions.create(params);
-        res.redirect(303, session.url);
+        res.status(200).json(session);
       } catch (err) {
         res.status(err.statusCode || 500).json(err.message);
       }

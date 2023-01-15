@@ -18,11 +18,6 @@ const ProductDetails = ({products, clickedProduct}) => {
                         <img src={image && image[0]} className='product-detail-image'/>
                     </figure>
                 </div>
-                {/*<div className='small-images-container'>
-                    {image?.map((item, image) => 
-                    (<img src={item} className="" onMouseEnter=""/>)
-                    )}
-                </div> */}
             </div>
             <div className='product-detail-desc'>
                 <h1>{name}</h1>

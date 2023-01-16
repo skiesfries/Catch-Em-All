@@ -14,10 +14,10 @@ const FooterBanner = ({ footerProduct, footerBanner: { discount, largeText1, lar
           <h3>{largeText2}</h3>
           <p>{saleTime}</p>
           <Link href={`/product/${footerProduct.slug.current}`}>
-            <button class="button-82-pushable" role="button">
-              <span class="button-82-shadow"></span>
-              <span class="button-82-edge"></span>
-              <span class="button-82-front text">{buttonText}</span>
+            <button className="button-82-pushable" role="button">
+              <span className="button-82-shadow"></span>
+              <span className="button-82-edge"></span>
+              <span className="button-82-front text">{buttonText}</span>
             </button>
           </Link>
         </div>

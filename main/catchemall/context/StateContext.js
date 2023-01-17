@@ -10,6 +10,7 @@ export const StateContext = ({ children }) => {
     const [cartTotal, setCartTotal] = useState(0);
     const [cartQuantity, setCartQuantity] = useState(0);
     const [qty, setQty] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
 
     let foundItem;
     let index;
@@ -92,6 +93,7 @@ export const StateContext = ({ children }) => {
                 cartItems, setCartItems,
                 cartTotal, setCartTotal,
                 cartQuantity, setCartQuantity,
+                currentPage, setCurrentPage,
                 qty, 
                 increaseQty,
                 decreaseQty,

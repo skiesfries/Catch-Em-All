@@ -9,12 +9,12 @@ const Navbar = () => {
   const {showCart, setShowCart, cartQuantity} = useStateContext();
   return (
     <div className='navbar-container'>
-      <p className='logo'>
-        <p>CATCH EM ALL</p>
+      <div className='logo'>
+      <p>CATCH EM ALL</p>
         <Link href="/">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png?20161023215848" className="poke" alt="Logo"/>
         </Link>
-      </p>
+      </div>
       <div className='navbar-links'>
         <Link href="/sealedproducts">
           <a className='navbar-link'>Sealed Products</a>

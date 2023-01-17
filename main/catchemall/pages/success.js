@@ -4,7 +4,6 @@ import {BsBagCheckFill} from 'react-icons/bs';
 import {useRouter} from 'next/router';
 
 import {useStateContext} from '../context/StateContext';
-import anime from 'animejs/lib/anime.es.js';
 
 
 const Success = () => {

@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { urlFor } from '../lib/client';
-
 const Product = ({products: {image, name, setName, price, slug, description } }) => {
   return (
     <div>

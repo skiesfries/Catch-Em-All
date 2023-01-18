@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link href="/sealedproducts">
           <a className='navbar-link'>Sealed Products</a>
         </Link>
-        <Link href="/singles">
+        <Link href="/cardsingles">
           <a className='navbar-link'>Card Singles</a>
         </Link>
       </div> 

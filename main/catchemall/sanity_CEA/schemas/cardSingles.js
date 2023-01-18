@@ -9,7 +9,7 @@ export default
             name:'image',
             title:'Image',
             type: 'array',
-            of: [{type: 'image'}],
+            of: [{type: 'string'}],
             options: {hotspot: true,}
         },
         {
@@ -18,13 +18,18 @@ export default
             type: 'string',
         },
         {
-            name:'set',
-            title:'Set',
+            name:'setName',
+            title:'Set Name',
             type: 'string',
         },
         {
             name:'cardNumber',
             title:'Card Number',
+            type: 'number',
+        },
+        {
+            name:'setTotal',
+            title:'Set Total',
             type: 'number',
         },
         {
@@ -36,6 +41,14 @@ export default
             name:'price',
             title:'Price',
             type: 'number',
+            validation: (Rule) => Rule.positive(),
+            options: {
+                decimalScale: 2,
+                fixedDecimalScale: true,
+                allowNegative: false,
+                decimalSeparator: '.',
+                thousandSeparator: ',',
+            }
         },
         {
             name:'slug',
@@ -50,6 +63,11 @@ export default
             name:'description',
             title:'Description',
             type: 'string',
+        },
+        {
+            name:'review',
+            title:'Review',
+            type: 'number',
         }
         
 

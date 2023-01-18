@@ -10,7 +10,6 @@ import { useStateContext } from '../context/StateContext';
 const CardSingles = ({cards}) => {
     const {currentPage} = useStateContext();
     let filterOptions = ['Card Number', 'Set', 'Price'];
-    const [isOpen, setIsOpen] = useState(false);
     const [filterOption, setFilterOption] = useState(filterOptions[0]);
     const cardsPerPage = 24;
     
@@ -18,7 +17,6 @@ const CardSingles = ({cards}) => {
     const startIndex = (currentPage - 1) * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
     const cardsToDisplay = cards.slice(startIndex, endIndex);
-
     return (
         <div>
             <div className='sealed-products-heading'>

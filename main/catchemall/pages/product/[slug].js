@@ -82,10 +82,10 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params: { slug }}) => {
-    const query = `*[_type == "sealedProducts" && slug.current == '${slug}'][0]`;
+    const query = `*[_type in ["sealedProducts", "cardSingles"] && slug.current == '${slug}'][0]`;
     const clickedProduct = await client.fetch(query);
 
-    const similiarProductsQuery = `*[_type == "sealedProducts" && setName == '${clickedProduct.setName}'][1...9]`;
+    const similiarProductsQuery = `*[_type in ["sealedProducts", "cardSingles"] && setName == '${clickedProduct.setName}'][1...9]`;
     const products = await client.fetch(similiarProductsQuery);
 
     return {

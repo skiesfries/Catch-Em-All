@@ -6,7 +6,7 @@ import {useStateContext} from '../../context/StateContext';
 import {client, urlFor} from '../../lib/client';
 
 const ProductDetails = ({products, clickedProduct}) => {
-  const { image, name, description, price }  = clickedProduct; 
+  const { image, name, setName, description, price }  = clickedProduct; 
   const {decreaseQty, increaseQty, qty, addToCart} = useStateContext();
 
   return (
@@ -21,6 +21,7 @@ const ProductDetails = ({products, clickedProduct}) => {
             </div>
             <div className='product-detail-desc'>
                 <h1>{name}</h1>
+                <h3>Set: {setName}</h3>
                 <div className='reviews'>
                     <div>
                         <AiFillStar/>
@@ -33,7 +34,7 @@ const ProductDetails = ({products, clickedProduct}) => {
                 </div>
                 <h4>Product Details: </h4>
                 <p>{description}</p>
-                <p className='price'>${price}</p>
+                <p className='price'>${price.toFixed(2)}</p>
                 <div className='quantity'>
                     <h3>Quantity: </h3>
                     <p className='quantity-desc'>

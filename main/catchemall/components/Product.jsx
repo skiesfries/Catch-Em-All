@@ -9,7 +9,7 @@ const Product = ({products: {image, name, setName, price, slug, description } })
           <img src={image && image[0]} className='product-image'/>
           <div>
           <p className='product-name'>{name}</p>
-          <p className='product-price'>${price}</p>
+          <p className='product-price'>${price.toFixed(2)}</p>
           </div>
         </div>
       </Link>

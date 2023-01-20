@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar} from 'react-icons/ai';
 import { Product } from '../../components';
 import {useStateContext} from '../../context/StateContext';

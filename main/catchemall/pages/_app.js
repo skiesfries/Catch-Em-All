@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/globals.css';
-import '../styles/styles.css';
 import { StateContext } from '../context/StateContext';
 import { Toaster } from 'react-hot-toast';
 import {Tooltip} from 'react-tooltip';

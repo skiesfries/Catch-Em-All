@@ -75,7 +75,6 @@ export const getStaticPaths = async () => {
     const paths = products.map((product) => ({params: {
         slug: product.slug.current}
     }));
-
     return {
         paths,
         fallback: 'blocking'

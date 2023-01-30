@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Link from 'next/link';
 import {AiOutlineShopping} from 'react-icons/ai';
+import { useRouter } from 'next/router';
 
 import { Cart } from './';
 import { useStateContext } from '../context/StateContext';
 
 const Navbar = () => {
-  const {showCart, setShowCart, cartQuantity} = useStateContext();
+  const {showCart, setShowCart, cartQuantity, setSearchTerm, searchTerm} = useStateContext();
+  const router = useRouter();
+  const searchInputRef = useRef(null);
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      router.push({ pathname: '/searchresults', query: { searchTerm } });
+      searchInputRef.current.value = "";
+    }
+  };
   return (
     <div className='navbar-container'>
       <div className='logo'>
@@ -23,6 +33,16 @@ const Navbar = () => {
           <a className='navbar-link'>Card Singles</a>
         </Link>
       </div> 
+      <div className='search-container'>
+        <input 
+        type='text' 
+        placeholder='Search...' 
+        className='search-input'
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
+        ref={searchInputRef}
+        />
+      </div>
       <button type='button' className='cart-icon' onClick={() => setShowCart(true)}>
         <AiOutlineShopping/>
         <span className='cart-item-qty'>{cartQuantity}</span>

@@ -1,10 +1,8 @@
-# Catch Em All (WIP)
+# Catch Em All 
  A Pokemon TCG Ecommerce web application built using React, Next.JS and Sanity 
-** Currently in production -- current deployment can be seen at: https://catch-em-all-skiesfries.vercel.app/
+Current deployment can be seen at: https://catch-em-all-skiesfries.vercel.app/
 
 Work done in Week 1 of developing this application can be seen in the following vlog: https://youtu.be/nK4tJMvqliE
-
-Progress as of 1/12/23
 
 Homepage:
 Frontend is mostly complete with only background styling left to do. Most features on the page is functional. 
